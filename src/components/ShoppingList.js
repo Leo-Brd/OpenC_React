@@ -1,32 +1,33 @@
 import { plantList } from '../datas/plantList'
-import CareScale from './CareScale'
 import '../styles/ShoppingList.css'
-import '../styles/PlantItem.css'
+import PlantItem from './PlantItem'
 
-function ShoppingList() {
+function ShoppingList({children}) {
 	const categories = plantList.reduce(
 		(acc, plant) =>
 			acc.includes(plant.category) ? acc : acc.concat(plant.category),
 		[]
 	)
 
-	return (
+    return (
 		<div>
 			<ul>
 				{categories.map((cat) => (
 					<li key={cat}>{cat}</li>
 				))}
 			</ul>
-			<ul className='lmj-plant-list'>
-				{plantList.map((plant) => (
-					<li key={plant.id} className='lmj-plant-item'>
-						{plant.isBestSale && <span>🔥</span>}
-						{plant.name}
-						<CareScale careType='water' scaleValue={plant.water} />
-						<CareScale careType='light' scaleValue={plant.light} />
-					</li>
-				))}
-			</ul>
+
+            <ul className='lmj-plant-list'>
+                {plantList.map(({ id, cover, name, water, light }) => (
+                    <PlantItem
+                        id={id}
+                        cover={cover}
+                        name={name}
+                        water={water}
+                        light={light}
+                    />
+                ))}
+		    </ul>
 		</div>
 	)
 }

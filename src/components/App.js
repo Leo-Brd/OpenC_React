@@ -11,7 +11,7 @@ function App() {
 				<h1 className='lmj-title'>La maison jungle</h1>
 			</Banner>
 			{/* <Cart /> */}
-			<ShoppingList />
+      <ShoppingList />
 		</div>
 	)
 }
