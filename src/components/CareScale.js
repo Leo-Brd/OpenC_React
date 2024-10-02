@@ -11,7 +11,7 @@ function CareScale({ scaleValue, careType }) {
 		)
 
 	return (
-		<div>
+		<div onClick= {() => clickSunWater(scaleValue, careType)}>
 			{range.map((rangeElem) =>
 				scaleValue >= rangeElem ? (
 					<span key={rangeElem.toString()}>{scaleType}</span>
@@ -19,6 +19,38 @@ function CareScale({ scaleValue, careType }) {
 			)}
 		</div>
 	)
+}
+
+function clickSunWater(scaleValue, careType) {
+
+	let mot = ""
+	switch(scaleValue) {
+		case 1:
+			mot = "peu"
+			break;
+		case 2:
+			mot = "modérement"
+			break;
+		case 3:
+			mot = "beaucoup"
+			break;
+		default:
+			mot = ""
+	}
+
+	let mot_2 = ""
+	switch(careType) {
+		case "light":
+			mot_2 = "de lumière"
+			break;
+		case "water":
+			mot_2 = "d'arrosage"
+			break;
+		default:
+			mot_2 = ""
+	}
+
+    alert(`Ce produit requiert ${mot} ${mot_2}`)
 }
 
 export default CareScale
