@@ -8,6 +8,7 @@ function Cart({ cart, updateCart }) {
 		(acc, item) => acc + cart[item].amount * cart[item].price,
 		0
 	)
+
 	useEffect(() => {
 		document.title = `LMJ: ${total}€ d'achats`
 	}, [total])
